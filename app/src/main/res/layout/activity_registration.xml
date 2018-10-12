@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="signup"
+            type="com.example.mikki.databinding.viewmodels.ViewModel"/>
+    </data>
+
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.RegistrationActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_reg_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="24dp"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+        <EditText
+            android:id="@+id/et_reg_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:afterTextChanged
+                ="@{(editable)->signup.setRegistrationUsernameTextChanged(editable)}"
+            android:hint="Username"
+            android:padding="10dp"
+            android:layout_margin="20dp"/>
+
+        <EditText
+            android:id="@+id/et_reg_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:afterTextChanged
+                ="@{(editable)->signup.setRegistrationPwTextChanged(editable)}"
+            android:hint="Password"
+            android:padding="10dp"
+            android:layout_margin="20dp"/>
+
+        <EditText
+            android:id="@+id/et_reg_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:afterTextChanged
+                ="@{(editable)->signup.setEmailTextChanged(editable)}"
+            android:hint="Email Address"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+        <Button
+            android:id="@+id/btn_reg_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:onClick="@{()->signup.onRegistrationBtnClicked()}"
+            bind:toast_msg_valid="@{signup.toast_msg_valid}"/>
+    </LinearLayout>
+
+</layout>

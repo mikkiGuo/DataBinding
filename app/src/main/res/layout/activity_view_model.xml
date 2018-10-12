@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.mikki.databinding.viewmodels.ViewModel"/>
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.MainActivity"
+        android:orientation="vertical"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <TextView
+            android:id="@+id/tv_java_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="24dp"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+        <EditText
+            android:id="@+id/et_java_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:inputType="textPersonName"
+            android:afterTextChanged
+                ="@{(editable)->viewmodel.setUsernameTextChange(editable)}"
+            />
+
+        <EditText
+            android:id="@+id/et_java_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:inputType="textPersonName"
+            android:afterTextChanged
+                ="@{(editable)->viewmodel.setPasswordTextChange(editable)}"/>
+
+        <!--this is a lamda expression-->
+        <Button
+            android:id="@+id/btn_java_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="@{()-> viewmodel.onLoginBtnClicked()}"
+            bind:toast_msg_valid = "@{viewmodel.toast_msg_valid}"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+
+</layout>

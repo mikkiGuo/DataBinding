@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="login"
+            type="com.example.mikki.databinding.viewmodels.ViewModelKotlin"/>
+    </data>
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.UserKotlinVMActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_kotlin_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:text="Kotlin Login ViewModel"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            />
+
+        <EditText
+            android:id="@+id/et_kotlin_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:afterTextChanged
+                ="@{(editable)->login.setUsernameTextChanged(editable)}"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+        <EditText
+            android:id="@+id/et_kotlin_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:afterTextChanged
+                ="@{(editable)->login.setPasswordTextChanged(editable)}"
+            android:padding="10dp"
+            android:layout_margin="20dp"/>
+
+        <Button
+            android:id="@+id/btn_kotlin_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="@{()-> login.onLoginButtonClicked()}"
+            bind:toast_msg_valid="@{login.toast_msg_valid}"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+</layout>
